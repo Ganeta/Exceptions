@@ -1,0 +1,36 @@
+package exception;
+
+@SuppressWarnings("serial")
+public class CheckedException extends Exception {
+
+
+    public CheckedException(String message) {
+        super(message);
+    }
+}
+
+
+
+package exception;
+
+public class MyCheckedExceptionClient {
+    public void method() throws CheckedException {
+        throw new CheckedException(" Information about the situation...");
+    }
+
+    public void method2() {
+
+        try {
+            method();
+        } catch (CheckedException e) {
+
+            // e.printStackTrace();
+            System.out.println("Service not available at the moment!" + e.getMessage());
+        }
+    }
+
+    public static void main(String args[]) {
+        MyCheckedExceptionClient test1 = new MyCheckedExceptionClient();
+        test1.method2();
+    }
+}
